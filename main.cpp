@@ -48,4 +48,18 @@ public:
     double getAveragePrices() {
         double sum = 0;
         for (int i = 0; i < SIZE; i++)
-            sum += pric
+            sum += prices[i];
+        return sum / SIZE;
+    }
+
+    void print() {
+        cout << "CHAIR DATA - Legs: " << legs << endl;
+        cout << "Price history: ";
+        for (int i = 0; i < SIZE; i++)
+            cout << prices[i] << " ";
+        cout << endl << "Historical avg price: " << getAveragePrices();
+        cout << endl << endl;
+    }
+
+    ~Chair() {
+        delete
