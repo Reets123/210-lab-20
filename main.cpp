@@ -26,4 +26,19 @@ public:
         
         // Random prices between $100.00 and $999.99
         const int MIN = 10000, MAX = 99999;
-        for (int i = 0;
+        for (int i = 0; i < SIZE; i++)
+            prices[i] = (rand() % (MAX - MIN + 1) + MIN) / 100.0;
+    }
+
+    Chair(int l, double p[]) {
+        leg = l;
+        prices = new double[SIZE];
+        for (int i = 0; i < SIZE; i++) {
+            prices[i] = p[i];
+        }
+    }
+
+    // setters and getters
+    void setLegs(int l) { legs = l; }
+    int getLegs() { return legs; }
+    void setPrices(double 
