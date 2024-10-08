@@ -41,4 +41,11 @@ public:
     // setters and getters
     void setLegs(int l) { legs = l; }
     int getLegs() { return legs; }
-    void setPrices(double 
+    void setPrices(double p1, double p2, double p3) {
+        prices[0] = p1; prices[1] = p2; prices[2] = p3;
+    }
+    
+    double getAveragePrices() {
+        double sum = 0;
+        for (int i = 0; i < SIZE; i++)
+            sum += pric
