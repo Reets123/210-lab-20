@@ -62,4 +62,17 @@ public:
     }
 
     ~Chair() {
-        delete
+        delete[] prices;
+    }
+};
+
+int main() {
+    cout << fixed << setprecision(2);
+
+    Chair* chairPtr = new Chair;
+    chairPtr->print();
+
+    double prices1[SIZE] = {525.25, 434.34, 252.52};
+    Chair* livingChair = new Chair(3, prices1);
+    livingChair->print();
+    delete livingCh
