@@ -1,6 +1,20 @@
 // Lab 20: Chair Maker 3000
 // COMSC-210 - Ibrahim Alatig 
 
+//     Chair                      
+// -------------------
+// - legs: int                                   
+//- prices: double*                            
+//-------------------
+// + Chair()                                     
+// + Chair(int l, double p[])                    
+// + void setLegs(int l)                        
+// + int getLegs(): int                         
+// + void setPrices(double p1, double p2, double p3) 
+// + double getAveragePrices(): double           
+// + void print()                                
+// + ~Chair()          
+
 #include <iostream>
 #include <iomanip>
 #include <cstdlib> 
@@ -75,4 +89,19 @@ int main() {
     double prices1[SIZE] = {525.25, 434.34, 252.52};
     Chair* livingChair = new Chair(3, prices1);
     livingChair->print();
-    delete livingCh
+    delete livingChair;
+    livingChair = nullptr;
+
+    // Creating dynamic array of chair objects using default constructors
+    Chair* collection = new Chair[SIZE];
+    for (int i = 0; i < SIZE; i++) {
+        collection[i] = Chair(); // Uses default constructor
+        collection[i].print();
+    }
+
+    delete[] collection;
+    delete chairPtr;
+    chairPtr = nullptr;
+
+    return 0;
+}
