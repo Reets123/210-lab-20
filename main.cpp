@@ -93,6 +93,8 @@ public:
 };
 
 int main() {
+    srand(static_cast<unsigned int>(time(0)));
+    
     cout << fixed << setprecision(2);
 
     Chair* chairPtr = new Chair;
