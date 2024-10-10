@@ -45,7 +45,7 @@ public:
     }
 
     Chair(int l, double p[]) {
-        leg = l;
+        legs = l;
         prices = new double[SIZE];
         for (int i = 0; i < SIZE; i++) {
             prices[i] = p[i];
