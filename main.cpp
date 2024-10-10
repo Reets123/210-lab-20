@@ -30,31 +30,43 @@ private:
     double* prices;
 public:
     // constructors
-    Chair() {
-        // Seed the random number generator
-        srand(static_cast<unsigned int>(time(0)));
-        
-        // Randomly select 3 or 4 legs
-        legs = (rand() % 2) + 3; // Randomly selects 3 or 4
-        prices = new double[SIZE];
-        
+    Chair() : legs((rand() % 2) + 3), prices(new double[SIZE]) { // Constructor initialization list
         // Random prices between $100.00 and $999.99
         const int MIN = 10000, MAX = 99999;
         for (int i = 0; i < SIZE; i++)
             prices[i] = (rand() % (MAX - MIN + 1) + MIN) / 100.0;
     }
 
-    Chair(int l, double p[]) {
-        legs = l;
-        prices = new double[SIZE];
+     Chair(int l, double p[]) : legs(l), prices(new double[SIZE]) { // Constructor initialization list
         for (int i = 0; i < SIZE; i++) {
             prices[i] = p[i];
         }
     }
 
-    // setters and getters
+    // Copy Constructor
+    Chair(const Chair& other) : legs(other.legs), prices(new double[SIZE]) { // Proper copy constructor
+        for (int i = 0; i < SIZE; i++) {
+            prices[i] = other.prices[i];
+        }
+    }
+
+     // Assignment Operator
+    Chair& operator=(const Chair& other) { // Proper assignment operator
+        if (this != &other) { // Prevent self-assignment
+            delete[] prices; // Clean up old memory
+            legs = other.legs;
+            prices = new double[SIZE]; // Allocate new memory
+            for (int i = 0; i < SIZE; i++) {
+                prices[i] = other.prices[i]; // Copy prices
+            }
+        }
+        return *this;
+    }
+
+     // setters and getters
     void setLegs(int l) { legs = l; }
     int getLegs() { return legs; }
+    
     void setPrices(double p1, double p2, double p3) {
         prices[0] = p1; prices[1] = p2; prices[2] = p3;
     }
